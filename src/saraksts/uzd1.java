@@ -40,7 +40,7 @@ LinkedList<String> saraksts = new LinkedList<>();
 						koPievienot = 
 								JOptionPane.showInputDialog("Kādu produktu pievienot");					
 					}while((jauEksiste(saraksts, koPievienot) == true) || 
-							!koPievienot.matches("[\\p{L}&&\\p{IsLatin}\\s]+"));
+							!koPievienot.matches("^[\\p{L} ]+$"));
 					
 					saraksts.add(koPievienot.toLowerCase());
 					JOptionPane.showMessageDialog(null, "Produkts pievienots sarakstam!", "Informacija",
@@ -65,6 +65,20 @@ LinkedList<String> saraksts = new LinkedList<>();
 							}
 						JOptionPane.showMessageDialog(null, str, "Produktu saraksts", JOptionPane.INFORMATION_MESSAGE);
 						}
+					break;
+					
+				case "4":
+					do {
+						koAtrast = JOptionPane.showInputDialog(null, "Kadu produktu meklet saraksta?", "Jautajums",
+								JOptionPane.INFORMATION_MESSAGE);
+					}while(!koAtrast.matches("^[\\p{L} ]+$"));
+					
+					JOptionPane.showMessageDialog(null, 
+							((saraksts.indexOf(koAtrast))>-1)?
+									"Produkts atrasts "+saraksts.indexOf(koAtrast)+". pozicija"
+									:"Produkts netika atrasts saraksta!",
+									"Informacija",
+									JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
 				
