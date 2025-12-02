@@ -80,6 +80,29 @@ LinkedList<String> saraksts = new LinkedList<>();
 									"Informacija",
 									JOptionPane.INFORMATION_MESSAGE);
 					break;
+				case"5":
+					do {
+						koPievienot =
+								JOptionPane.showInputDialog("Kādu produktu pievienot");
+						kurPievienot = Integer.parseInt(
+								JOptionPane.showInputDialog("Kurā pozīcija pievienot?"));
+								
+					}while((jauEksiste(saraksts, koPievienot)== true)||!koPievienot.matches("^[\\p{L} ]+$"));
+					saraksts.add(kurPievienot, koPievienot);
+				case "6":
+					do {
+						koNonemt =
+								JOptionPane.showInputDialog("Kādu produktu nonemt");
+						
+						if(saraksts.contains(koNonemt)) {
+							kurNonemt = saraksts.indexOf(koNonemt);
+							saraksts.remove(kurNonemt);
+							JOptionPane.showMessageDialog(null, "Produkts ir nonemts!",
+									"Informācija",JOptionPane.INFORMATION_MESSAGE);
+							
+						}
+					}while((jauEksiste(saraksts,koNonemt )== true)||!koNonemt.matches("^[\\p{L} ]+$"));
+					break;
 				}
 				
 		}while(!izvele.equals("0"));
