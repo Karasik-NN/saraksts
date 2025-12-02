@@ -87,7 +87,8 @@ LinkedList<String> saraksts = new LinkedList<>();
 						kurPievienot = Integer.parseInt(
 								JOptionPane.showInputDialog("Kurā pozīcija pievienot?"));
 								
-					}while((jauEksiste(saraksts, koPievienot)== true)||!koPievienot.matches("^[\\p{L} ]+$"));
+					}while((jauEksiste(saraksts, koPievienot)== true)||!koPievienot.matches("^[\\p{L} ]+$")
+							|| kurPievienot > saraksts.size()||kurPievienot<0);
 					saraksts.add(kurPievienot, koPievienot);
 				case "6":
 					do {
@@ -100,9 +101,18 @@ LinkedList<String> saraksts = new LinkedList<>();
 							JOptionPane.showMessageDialog(null, "Produkts ir nonemts!",
 									"Informācija",JOptionPane.INFORMATION_MESSAGE);
 							
+						}else {
+							JOptionPane.showMessageDialog(null, "Nav tadu produktu!","Bridinajums",JOptionPane.ERROR_MESSAGE);
 						}
 					}while((jauEksiste(saraksts,koNonemt )== true)||!koNonemt.matches("^[\\p{L} ]+$"));
 					break;
+				case "7":
+					do {
+					kurNonemt = Integer.parseInt(
+							JOptionPane.showInputDialog("Kuras pozicijas elementu nonemt?"));
+					}while(kurNonemt<0||kurNonemt>=saraksts.size());
+				
+					
 				}
 				
 		}while(!izvele.equals("0"));
